@@ -4,7 +4,6 @@ from pathlib import Path
 
 from loguru import logger
 
-from roadvision.data.downloader import download_dataset
 from roadvision.data.validator import validate_dataset_directory
 
 
@@ -16,7 +15,7 @@ class DatasetManager:
 
         logger.info("Preparing dataset...")
 
-        dataset_path = download_dataset(destination)
+        dataset_path = Path(destination)
 
         validate_dataset_directory(dataset_path)
 
