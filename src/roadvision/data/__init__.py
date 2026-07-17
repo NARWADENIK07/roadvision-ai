@@ -1,4 +1,7 @@
-from roadvision.data.downloader import download_dataset
+from roadvision.data.downloader import (
+    download_dataset,
+    download_file,
+)
 from roadvision.data.extractor import extract_archive
 from roadvision.data.integrity import (
     calculate_sha256,
@@ -23,4 +26,5 @@ __all__ = [
     "extract_archive",
     "calculate_sha256",
     "verify_checksum",
+    "download_file",
 ]
