@@ -1,42 +1,31 @@
-# Python
+# Python caches
 __pycache__/
 *.py[cod]
-*.pyo
 
 # Virtual environments
 .venv/
 
-# Build
-dist/
-build/
-*.egg-info/
-
-# Coverage
+# Tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .coverage
 htmlcov/
 
-# Pytest
-.pytest_cache/
-
-# MyPy
-.mypy_cache/
-
-# Ruff
-.ruff_cache/
-
-# VS Code
-.vscode/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# ML artifacts
-data/
-models/
-outputs/
-logs/
-mlruns/
+# Generated ML assets (root only)
+/data/raw/
+/data/interim/
+/data/processed/
+/data/external/
+/models/
+/outputs/
+/logs/
+/mlruns/
 
 # Environment
 .env
+
+# Editors / OS
+.vscode/
+.DS_Store
+Thumbs.db
