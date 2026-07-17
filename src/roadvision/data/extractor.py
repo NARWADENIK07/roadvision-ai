@@ -1,11 +1,27 @@
-"""Dataset extraction utilities."""
+"""Archive extraction utilities."""
 
 from pathlib import Path
+from zipfile import ZipFile
+
+from loguru import logger
 
 
-def extract_archive(archive_path: str | Path, destination: str | Path) -> None:
-    """Extract a dataset archive.
+def extract_archive(
+    archive_path: str | Path,
+    destination: str | Path,
+) -> Path:
+    """Extract a ZIP archive."""
 
-    Implementation will be added in a later sprint.
-    """
-    raise NotImplementedError
+    archive_path = Path(archive_path)
+    destination = Path(destination)
+
+    logger.info("Extracting {}...", archive_path.name)
+
+    destination.mkdir(parents=True, exist_ok=True)
+
+    with ZipFile(archive_path) as archive:
+        archive.extractall(destination)
+
+    logger.success("Extraction completed.")
+
+    return destination

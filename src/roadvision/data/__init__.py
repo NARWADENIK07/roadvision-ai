@@ -1,4 +1,5 @@
 from roadvision.data.downloader import download_dataset
+from roadvision.data.extractor import extract_archive
 from roadvision.data.manager import prepare_dataset
 from roadvision.data.metadata import GTSRB_METADATA
 from roadvision.data.source import GTSRB_SOURCE, DatasetSource
@@ -15,4 +16,5 @@ __all__ = [
     "is_dataset_present",
     "DatasetSource",
     "GTSRB_SOURCE",
+    "extract_archive",
 ]
