@@ -3,25 +3,27 @@
 from pathlib import Path
 from zipfile import ZipFile
 
-from loguru import logger
+from roadvision.data.exceptions import ExtractionError
 
 
 def extract_archive(
     archive_path: str | Path,
     destination: str | Path,
 ) -> Path:
-    """Extract a ZIP archive."""
+    """Extract a ZIP archive safely."""
 
     archive_path = Path(archive_path)
     destination = Path(destination)
 
-    logger.info("Extracting {}...", archive_path.name)
-
     destination.mkdir(parents=True, exist_ok=True)
 
     with ZipFile(archive_path) as archive:
-        archive.extractall(destination)
+        for member in archive.infolist():
+            target_path = (destination / member.filename).resolve()
 
-    logger.success("Extraction completed.")
+            if not target_path.is_relative_to(destination.resolve()):
+                raise ExtractionError(f"Unsafe archive member: {member.filename}")
+
+        archive.extractall(destination)
 
     return destination
