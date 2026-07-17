@@ -7,7 +7,7 @@ from roadvision.data.integrity import (
     calculate_sha256,
     verify_checksum,
 )
-from roadvision.data.manager import prepare_dataset
+from roadvision.data.manager import DatasetManager
 from roadvision.data.metadata import GTSRB_METADATA
 from roadvision.data.source import GTSRB_SOURCE, DatasetSource
 from roadvision.data.validator import (
@@ -17,7 +17,7 @@ from roadvision.data.validator import (
 
 __all__ = [
     "download_dataset",
-    "prepare_dataset",
+    "DatasetManager",
     "GTSRB_METADATA",
     "validate_dataset_directory",
     "is_dataset_present",
@@ -27,4 +27,5 @@ __all__ = [
     "calculate_sha256",
     "verify_checksum",
     "download_file",
+    "",
 ]
