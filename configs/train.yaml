@@ -1,0 +1,13 @@
+training:
+  batch_size: 32
+  epochs: 20
+  learning_rate: 0.001
+  seed: 42
+
+dataset:
+  name: gtsrb
+  image_size: 224
+
+model:
+  name: resnet18
+  pretrained: true
