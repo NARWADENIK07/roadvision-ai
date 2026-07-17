@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from roadvision.data.exceptions import DatasetError
+from roadvision.data.exceptions import ValidationError
 from roadvision.data.validator import (
     is_dataset_present,
     validate_dataset_directory,
@@ -14,7 +14,7 @@ def test_validate_existing_directory(tmp_path: Path) -> None:
 
 
 def test_validate_missing_directory() -> None:
-    with pytest.raises(DatasetError):
+    with pytest.raises(ValidationError):
         validate_dataset_directory("missing_directory")
 
 

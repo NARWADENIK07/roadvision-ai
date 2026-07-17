@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from roadvision.data.exceptions import DatasetError
+from roadvision.data.exceptions import ValidationError
 
 
 def validate_dataset_directory(dataset_path: str | Path) -> Path:
@@ -11,10 +11,10 @@ def validate_dataset_directory(dataset_path: str | Path) -> Path:
     path = Path(dataset_path)
 
     if not path.exists():
-        raise DatasetError(f"Dataset directory not found: {path}")
+        raise ValidationError(f"Dataset directory not found: {path}")
 
     if not path.is_dir():
-        raise DatasetError(f"Expected directory: {path}")
+        raise ValidationError(f"Expected directory: {path}")
 
     return path
 

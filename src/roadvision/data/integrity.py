@@ -1,9 +1,19 @@
-"""Dataset integrity verification."""
+"""Dataset integrity checks."""
 
 from hashlib import sha256
 from pathlib import Path
 
+from roadvision.data.exceptions import ChecksumMismatchError
+
 CHUNK_SIZE = 8192
+
+
+def verify_dataset(dataset_path: str | Path) -> bool:
+    """Verify dataset integrity.
+
+    Implementation will be added in a later sprint.
+    """
+    raise NotImplementedError
 
 
 def calculate_sha256(file_path: str | Path) -> str:
@@ -23,7 +33,10 @@ def calculate_sha256(file_path: str | Path) -> str:
 def verify_checksum(
     file_path: str | Path,
     expected_checksum: str,
-) -> bool:
+) -> None:
     """Verify the SHA-256 checksum."""
 
-    return calculate_sha256(file_path) == expected_checksum
+    actual_checksum = calculate_sha256(file_path)
+
+    if actual_checksum != expected_checksum:
+        raise ChecksumMismatchError(f"Checksum mismatch for: {file_path}")
