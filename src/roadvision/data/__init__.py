@@ -1,5 +1,9 @@
 from roadvision.data.downloader import download_dataset
 from roadvision.data.extractor import extract_archive
+from roadvision.data.integrity import (
+    calculate_sha256,
+    verify_checksum,
+)
 from roadvision.data.manager import prepare_dataset
 from roadvision.data.metadata import GTSRB_METADATA
 from roadvision.data.source import GTSRB_SOURCE, DatasetSource
@@ -17,4 +21,6 @@ __all__ = [
     "DatasetSource",
     "GTSRB_SOURCE",
     "extract_archive",
+    "calculate_sha256",
+    "verify_checksum",
 ]
