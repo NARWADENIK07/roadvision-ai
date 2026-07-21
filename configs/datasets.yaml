@@ -3,10 +3,10 @@ datasets:
     name: GTSRB
     version: "1.0"
 
-    url: ""
+    url: "https://sid.erda.dk/public/archives/daaeac0d7ce1152aea9b61d9f1e19370/GTSRB-Training_fixed.zip"
 
-    archive_name: gtsrb.zip
+    archive_name: "GTSRB-Training_fixed.zip"
 
-    dataset_directory: gtsrb
+    dataset_directory: "gtsrb"
 
     checksum: null

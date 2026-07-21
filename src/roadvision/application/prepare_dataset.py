@@ -13,7 +13,7 @@ def main() -> None:
 
     dataset_path = manager.prepare(
         source=get_dataset_source("gtsrb"),
-        destination=Path("data/raw"),
+        destination=Path("data"),
     )
 
     print(f"Dataset ready: {dataset_path}")
