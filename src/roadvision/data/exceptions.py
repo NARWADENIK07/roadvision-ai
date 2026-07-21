@@ -1,4 +1,4 @@
-"""Dataset exceptions."""
+"""Custom exceptions for the data module."""
 
 
 class DatasetError(Exception):
@@ -19,3 +19,7 @@ class ChecksumMismatchError(DatasetError):
 
 class ValidationError(DatasetError):
     """Raised when dataset validation fails."""
+
+
+class DatasetNotFoundError(Exception):
+    """Raised when a dataset is not registered."""

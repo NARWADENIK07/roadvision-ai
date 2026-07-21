@@ -1,0 +1,12 @@
+datasets:
+  gtsrb:
+    name: GTSRB
+    version: "1.0"
+
+    url: ""
+
+    archive_name: gtsrb.zip
+
+    dataset_directory: gtsrb
+
+    checksum: null

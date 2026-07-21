@@ -6,20 +6,22 @@ import requests
 
 from roadvision.data.downloader import download_dataset, download_file
 from roadvision.data.exceptions import DownloadError
-from roadvision.data.source import GTSRB_SOURCE
+from roadvision.data.registry import get_dataset_source
+
+SOURCE = get_dataset_source("gtsrb")
 
 
 def test_download_dataset(tmp_path: Path) -> None:
-    expected = tmp_path / GTSRB_SOURCE.archive_name
+    expected = tmp_path / SOURCE.archive_name
 
     with patch(
         "roadvision.data.downloader.download_file",
         return_value=expected,
     ) as mock_download:
-        result = download_dataset(GTSRB_SOURCE, tmp_path)
+        result = download_dataset(SOURCE, tmp_path)
 
     mock_download.assert_called_once_with(
-        GTSRB_SOURCE.url,
+        SOURCE.url,
         expected,
     )
 

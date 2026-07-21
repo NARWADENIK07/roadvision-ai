@@ -10,6 +10,8 @@ from roadvision.data.validator import (
 
 
 def test_validate_existing_directory(tmp_path: Path) -> None:
+    (tmp_path / "dummy.txt").write_text("dummy")
+
     assert validate_dataset_directory(tmp_path) == tmp_path
 
 
@@ -19,8 +21,17 @@ def test_validate_missing_directory() -> None:
 
 
 def test_dataset_present(tmp_path: Path) -> None:
+    (tmp_path / "dummy.txt").write_text("dummy")
+
     assert is_dataset_present(tmp_path)
 
 
-def test_dataset_not_present() -> None:
-    assert not is_dataset_present("missing_directory")
+def test_dataset_not_present(tmp_path: Path) -> None:
+    missing = tmp_path / "missing"
+
+    assert not is_dataset_present(missing)
+
+
+def test_validate_empty_directory(tmp_path: Path) -> None:
+    with pytest.raises(ValidationError):
+        validate_dataset_directory(tmp_path)
